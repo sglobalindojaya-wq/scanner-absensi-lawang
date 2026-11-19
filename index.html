@@ -431,7 +431,7 @@
     // =====================================
     // NOTIFIKASI SUARA (TIDAK MENAHAN SCANNER)
     // =====================================
-    const SOUND_SETTING_KEY = 'globalindo_attendance_sound_enabled';
+    const SOUND_SETTING_KEY = 'globalindo_attendance_sound_enabled_lawang';
     let attendanceAudioContext = null;
     let attendanceSoundEnabled = true;
     try { attendanceSoundEnabled = localStorage.getItem(SOUND_SETTING_KEY) !== 'false'; } catch (e) {}
@@ -1027,7 +1027,7 @@ function startBackgroundPhotoUpload(imageData, requestId, token) {
       googleIdToken = credential;
 
       try {
-        sessionStorage.setItem('absensi_google_id_token', credential);
+        sessionStorage.setItem('absensi_google_id_token_lawang', credential);
       } catch (storageError) {
         // Login tetap dapat dipakai selama halaman tidak di-refresh.
       }
@@ -1048,7 +1048,7 @@ function startBackgroundPhotoUpload(imageData, requestId, token) {
       let savedToken = '';
 
       try {
-        savedToken = sessionStorage.getItem('absensi_google_id_token') || '';
+        savedToken = sessionStorage.getItem('absensi_google_id_token_lawang') || '';
       } catch (storageError) {
         savedToken = '';
       }
@@ -1073,7 +1073,7 @@ function startBackgroundPhotoUpload(imageData, requestId, token) {
 
       if (email !== OFFICIAL_EMAIL || !stillValid) {
         try {
-          sessionStorage.removeItem('absensi_google_id_token');
+          sessionStorage.removeItem('absensi_google_id_token_lawang');
         } catch (storageError) {}
         return;
       }
@@ -1133,7 +1133,7 @@ function startBackgroundPhotoUpload(imageData, requestId, token) {
     // =====================================
     // ANTREAN ABSENSI LOKAL (INDEXEDDB)
     // =====================================
-    const ATTENDANCE_DB_NAME = 'GLOBALINDO_ABSENSI_DB';
+    const ATTENDANCE_DB_NAME = 'GLOBALINDO_ABSENSI_LAWANG_DB';
     const ATTENDANCE_STORE = 'pending_attendance';
     const PHOTO_TASK_STORE = 'photo_tasks';
     let attendanceDbPromise = null;
@@ -1225,7 +1225,7 @@ function startBackgroundPhotoUpload(imageData, requestId, token) {
       });
     }
 
-    const ATTENDANCE_HISTORY_KEY = 'globalindo_attendance_queue_history_v1';
+    const ATTENDANCE_HISTORY_KEY = 'globalindo_attendance_queue_history_lawang_v1';
 
     const ATTENDANCE_SUCCESS_HISTORY_TTL = 60 * 60 * 1000;
 
